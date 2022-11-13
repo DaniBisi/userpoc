@@ -32,6 +32,7 @@ public class FileServiceImpl implements FileService {
         List<CSVRecord> records = csvParser.getRecords();
         List<UserDto> collect = records.stream().map((csvRecord)
                 -> UserDto.builder()
+                        .id(Long.parseLong(csvRecord.get("Id")))
                         .userName(csvRecord.get("UserName"))
                         .email(csvRecord.get("Email"))
                         .firstName(csvRecord.get("FirstName"))

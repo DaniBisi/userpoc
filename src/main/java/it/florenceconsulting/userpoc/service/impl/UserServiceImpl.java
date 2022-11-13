@@ -16,12 +16,9 @@ public class UserServiceImpl implements UserService {
 
     UserDao userDao;
 
-
     public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
     }
-
-    
 
     @Override
     public User fromDto(UserDto userDto) {
@@ -32,7 +29,8 @@ public class UserServiceImpl implements UserService {
         User user = null;
         if (userDto.getId() != null) {
             user = userDao.getById(userDto.getId());
-        } else if (userDto.getId() == null) {
+        }
+        if (user == null) {
             user = User.builder().build();
         }
         user.setCellPhone(userDto.getCellPhone());
@@ -57,6 +55,5 @@ public class UserServiceImpl implements UserService {
                 .userName(user.getUserName())
                 .cellPhone(user.getCellPhone()).build();
     }
-
 
 }

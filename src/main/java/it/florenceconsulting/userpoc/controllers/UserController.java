@@ -108,8 +108,9 @@ public class UserController {
                     .body("Wrong file's content type");
         }
         List<UserDto> loaded = fileService.loadFromCsv(file);
-        List<UserDto> collect = loaded.stream().map((userDto) -> userService.fromDto(userDto)).flatMap(Stream::of).map((user) -> userService.fromModel(userDao.save(user))).collect(Collectors.toList());
-        return ResponseEntity.ok(collect);
+        List<User> collect = loaded.stream().map((userDto) -> userService.fromDto(userDto)).collect(Collectors.toList());
+        List<User> saved = userDao.saveAll(collect);
+        return ResponseEntity.ok(saved.stream().map((user) -> userService.fromModel(user)).collect(Collectors.toList()));
     }
 
 }

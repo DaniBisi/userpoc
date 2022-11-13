@@ -15,6 +15,8 @@ import java.util.List;
 public interface UserDao extends GenericDao<User, Long> {
 
     public List<User> getByParams(String username, String lastname, String firstname, Boolean allFilters);
+    
+    public List<User> saveAll(List<User> usersToBeSaved);
 
     
 }

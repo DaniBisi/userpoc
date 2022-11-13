@@ -40,15 +40,6 @@
                 <profiled.database.password>userpoc</profiled.database.password>
             </properties>
         </profile>
-        <profile>
-            <id>release-jar</id>
-            <properties>
-                <packaging.type>jar</packaging.type>
-                <profiled.database.url>jdbc:postgresql://localhost/userpoc</profiled.database.url>
-                <profiled.database.username>userpoc</profiled.database.username>
-                <profiled.database.password>userpoc</profiled.database.password>
-            </properties>
-        </profile>
     </profiles>
     <dependencies>
         <dependency>

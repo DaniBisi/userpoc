@@ -10,8 +10,11 @@ import it.florenceconsulting.userpoc.dao.GenericDaoHibernate;
 import it.florenceconsulting.userpoc.dao.UserDao;
 import it.florenceconsulting.userpoc.models.User;
 import java.util.List;
-import org.hibernate.Criteria;
+import java.util.stream.Collectors;
 import org.hibernate.Query;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -25,7 +28,7 @@ public class UserDaoImpl extends GenericDaoHibernate<User, Long> implements User
         String hql = null;
         if (allFilters) {
             hql = "from User u where u.userName LIKE :USERNAME AND u.lastName LIKE :LASTNAME AND u.firstName LIKE :FIRSTNAME";
-        }else{
+        } else {
             hql = "from User u where u.userName LIKE :USERNAME OR u.lastName LIKE :LASTNAME OR u.firstName LIKE :FIRSTNAME";
         }
         Query query = createQuery(hql);
@@ -35,6 +38,16 @@ public class UserDaoImpl extends GenericDaoHibernate<User, Long> implements User
 
         List resultList = query.getResultList();
         return resultList;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.NESTED,
+            isolation = Isolation.READ_UNCOMMITTED)
+    public List<User> saveAll(List<User> usersToBeSaved) {
+        return usersToBeSaved.stream().map((entity) -> {
+            return this.save(entity);
+        }
+        ).collect(Collectors.toList());
     }
 
 }
