@@ -13,7 +13,6 @@ import it.florenceconsulting.userpoc.service.UserService;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -87,7 +86,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/api/users/search")
-    ResponseEntity getAllUsers(@RequestParam(required = false) String username, @RequestParam(required = false) String lastname, @RequestParam(required = false) String firstname, @RequestParam(required = true) Boolean allFilters) {
+    ResponseEntity search(@RequestParam(required = false) String username, @RequestParam(required = false) String lastname, @RequestParam(required = false) String firstname, @RequestParam(required = true) Boolean allFilters) {
         return ResponseEntity.ok(userDao.getByParams(username, lastname, firstname, allFilters).stream().map((t)
                 -> userService.fromModel(t)
         ).collect(Collectors.toList()));
@@ -96,7 +95,7 @@ public class UserController {
 
     @RequestMapping(value = "/uploadCsv", method = RequestMethod.POST,
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity upload(@RequestParam("file") MultipartFile file, ModelMap modelMap) throws IOException {
+    public ResponseEntity upload(@RequestParam("file") MultipartFile file) throws IOException {
         if (file.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
