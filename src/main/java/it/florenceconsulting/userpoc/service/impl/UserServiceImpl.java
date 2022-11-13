@@ -16,9 +16,12 @@ public class UserServiceImpl implements UserService {
 
     UserDao userDao;
 
+
     public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
     }
+
+    
 
     @Override
     public User fromDto(UserDto userDto) {
@@ -54,5 +57,6 @@ public class UserServiceImpl implements UserService {
                 .userName(user.getUserName())
                 .cellPhone(user.getCellPhone()).build();
     }
+
 
 }
