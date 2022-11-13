@@ -3,36 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.florenceconsulting.userpoc.models;
+package it.florenceconsulting.userpoc.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import lombok.AllArgsConstructor;
+import it.florenceconsulting.userpoc.annotations.Email;
+import it.florenceconsulting.userpoc.annotations.NoSpecialCharacter;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  *
  * @author daniele
  */
-@Entity
-@Table(name = "user")
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class User{
+@ToString
+public class UserDto {
 
-    @Id
-    @GeneratedValue
     private Long id;
+    @NoSpecialCharacter
     private String userName;
+    @Email
     private String email;
+    @NoSpecialCharacter
     private String lastName;
+    @NoSpecialCharacter
     private String firstName;
+    @NoSpecialCharacter
     private String cellPhone;
 
 }

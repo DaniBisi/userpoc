@@ -40,15 +40,6 @@
                 <profiled.database.password>userpoc</profiled.database.password>
             </properties>
         </profile>
-        <profile>
-            <id>release-jar</id>
-            <properties>
-                <packaging.type>jar</packaging.type>
-                <profiled.database.url>jdbc:postgresql://localhost/userpoc</profiled.database.url>
-                <profiled.database.username>userpoc</profiled.database.username>
-                <profiled.database.password>userpoc</profiled.database.password>
-            </properties>
-        </profile>
     </profiles>
     <dependencies>
         <dependency>
@@ -82,6 +73,36 @@
             <version>42.5.0</version>            
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.12</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-schema</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>1.8</version>
+        </dependency>
+
     </dependencies>
 
     <build>
