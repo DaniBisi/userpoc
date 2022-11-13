@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-install</actionName>
+            <displayName>install</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-compile</actionName>
+            <displayName>compile</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>compile</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-install skiptest</actionName>
+            <displayName>install skiptest</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+                <goal>-DskipTest=true</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-install -PRelease</actionName>
+            <displayName>install -PRelease</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+                <goal>-Prelease</goal>
+            </goals>
+        </action>
+    </actions>
