@@ -11,12 +11,15 @@ import it.florenceconsulting.userpoc.models.User;
 import it.florenceconsulting.userpoc.service.UserService;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -32,14 +35,20 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(method = RequestMethod.PUT, value = "/api/users/{id}")
-    ResponseEntity updateUser(@RequestBody UserDto user) {
+    ResponseEntity updateUser(@RequestBody @Valid UserDto user, BindingResult binding) {
+        if (binding.hasErrors()) {
+            throw new IllegalArgumentException();
+        }
         User reg = userService.fromDto(user);
         User save = userDao.save(reg);
         return ResponseEntity.ok(save);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/api/users/add")
-    ResponseEntity createUser(@RequestBody UserDto user) {
+    ResponseEntity createUser(@RequestBody @Valid UserDto user, BindingResult binding) {
+        if (binding.hasErrors()) {
+            throw new IllegalArgumentException();
+        }
         User reg = userService.fromDto(user);
         User save = userDao.save(reg);
         return ResponseEntity.ok(save);
@@ -65,6 +74,14 @@ public class UserController {
             return userService.fromModel(t);
         }).collect(Collectors.toList());
         return ResponseEntity.ok(collectUsers);
+
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/api/users/search")
+    ResponseEntity getAllUsers(@RequestParam(required = false) String username, @RequestParam(required = false) String lastname, @RequestParam(required = false) String firstname, @RequestParam(required = true) Boolean allFilters) {
+        return ResponseEntity.ok(userDao.getByParams(username, lastname, firstname, allFilters).stream().map((t)
+                -> userService.fromModel(t)
+        ).collect(Collectors.toList()));
 
     }
 }

@@ -5,6 +5,8 @@
  */
 package it.florenceconsulting.userpoc.dto;
 
+import it.florenceconsulting.userpoc.annotations.Email;
+import it.florenceconsulting.userpoc.annotations.NoSpecialCharacter;
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
@@ -19,12 +21,15 @@ import lombok.ToString;
 public class UserDto {
 
     private Long id;
+    @NoSpecialCharacter
     private String userName;
+    @Email
     private String email;
+    @NoSpecialCharacter
     private String lastName;
+    @NoSpecialCharacter
     private String firstName;
+    @NoSpecialCharacter
     private String cellPhone;
-
-    
 
 }

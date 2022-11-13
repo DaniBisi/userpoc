@@ -6,11 +6,15 @@
 package it.florenceconsulting.userpoc.dao;
 
 import it.florenceconsulting.userpoc.models.User;
+import java.util.List;
 
 /**
  *
  * @author daniele
  */
 public interface UserDao extends GenericDao<User, Long> {
+
+    public List<User> getByParams(String username, String lastname, String firstname, Boolean allFilters);
+
     
 }
