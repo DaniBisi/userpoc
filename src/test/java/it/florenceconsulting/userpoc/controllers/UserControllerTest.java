@@ -76,11 +76,11 @@ public class UserControllerTest {
         System.out.println("updateUser");
         UserDto user = UserDto.builder()
                 .id(1L)
-                .cellPhone("333333333")
+                .cellphone("333333333")
                 .email("test@email.com")
-                .firstName("testname")
-                .lastName("testLastname")
-                .userName("testUsername").build();
+                .firstname("testname")
+                .lastname("testLastname")
+                .username("testUsername").build();
         BindingResult binding = mock(BindingResult.class);
         when(binding.hasErrors()).thenReturn(Boolean.FALSE);
 
@@ -98,11 +98,11 @@ public class UserControllerTest {
         System.out.println("updateUser");
         UserDto user = UserDto.builder()
                 .id(1L)
-                .cellPhone("333333333")
+                .cellphone("333333333")
                 .email("test@email.com")
-                .firstName("testname")
-                .lastName("testLastname")
-                .userName("testUsername").build();
+                .firstname("testname")
+                .lastname("testLastname")
+                .username("testUsername").build();
         BindingResult binding = mock(BindingResult.class);
         when(binding.hasErrors()).thenReturn(Boolean.TRUE);
         IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -117,11 +117,11 @@ public class UserControllerTest {
         System.out.println("updateUser");
         UserDto user = UserDto.builder()
                 .id(1L)
-                .cellPhone("333333333")
+                .cellphone("333333333")
                 .email("test@email.com")
-                .firstName("testname")
-                .lastName("testLastname")
-                .userName("testUsername").build();
+                .firstname("testname")
+                .lastname("testLastname")
+                .username("testUsername").build();
         BindingResult binding = mock(BindingResult.class);
         when(binding.hasErrors()).thenReturn(Boolean.FALSE);
 
@@ -139,11 +139,11 @@ public class UserControllerTest {
         System.out.println("updateUser");
         UserDto user = UserDto.builder()
                 .id(1L)
-                .cellPhone("333333333")
+                .cellphone("333333333")
                 .email("test@email.com")
-                .firstName("testname")
-                .lastName("testLastname")
-                .userName("testUsername").build();
+                .firstname("testname")
+                .lastname("testLastname")
+                .username("testUsername").build();
         BindingResult binding = mock(BindingResult.class);
         when(binding.hasErrors()).thenReturn(Boolean.TRUE);
         IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -161,11 +161,11 @@ public class UserControllerTest {
         System.out.println("getUser");
         Long id = 1L;
         User u = User.builder().id(1L)
-                .cellPhone("333333333")
+                .cellphone("333333333")
                 .email("test@email.com")
-                .firstName("testname")
-                .lastName("testLastname")
-                .userName("testUsername").build();
+                .firstname("testname")
+                .lastname("testLastname")
+                .username("testUsername").build();
         when(userDao.getById(id)).thenReturn(u);
         instance.getUser(id);
         verify(userDao, times(1)).getById(id);
@@ -201,17 +201,17 @@ public class UserControllerTest {
         System.out.println("getAllUsers");
         List<User> lu = new ArrayList();
         User u = User.builder().id(1L)
-                .cellPhone("333333333")
+                .cellphone("333333333")
                 .email("test@email.com")
-                .firstName("testname")
-                .lastName("testLastname")
-                .userName("testUsername").build();
+                .firstname("testname")
+                .lastname("testLastname")
+                .username("testUsername").build();
         User u2 = User.builder().id(2L)
-                .cellPhone("333333333")
+                .cellphone("333333333")
                 .email("test2@email.com")
-                .firstName("testname2")
-                .lastName("testLastname2")
-                .userName("testUsername2").build();
+                .firstname("testname2")
+                .lastname("testLastname2")
+                .username("testUsername2").build();
         lu.add(u2);
         lu.add(u);
         when(userDao.getAll()).thenReturn(lu);
@@ -233,17 +233,17 @@ public class UserControllerTest {
         Boolean allFilters = Boolean.TRUE;
         List<User> lu = new ArrayList();
         User u = User.builder().id(1L)
-                .cellPhone("333333333")
+                .cellphone("333333333")
                 .email("test@email.com")
-                .firstName("testname")
-                .lastName("testLastname")
-                .userName("testUsername").build();
+                .firstname("testname")
+                .lastname("testLastname")
+                .username("testUsername").build();
         User u2 = User.builder().id(2L)
-                .cellPhone("333333333")
+                .cellphone("333333333")
                 .email("test2@email.com")
-                .firstName("testname2")
-                .lastName("testLastname2")
-                .userName("testUsername2").build();
+                .firstname("testname2")
+                .lastname("testLastname2")
+                .username("testUsername2").build();
         lu.add(u2);
         lu.add(u);
         when(userDao.getByParams(username, lastname, firstname, allFilters)).thenReturn(lu);

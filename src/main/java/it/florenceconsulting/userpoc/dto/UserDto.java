@@ -7,9 +7,11 @@ package it.florenceconsulting.userpoc.dto;
 
 import it.florenceconsulting.userpoc.annotations.Email;
 import it.florenceconsulting.userpoc.annotations.NoSpecialCharacter;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
@@ -20,18 +22,20 @@ import lombok.ToString;
 @Builder
 @ToString
 @EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDto {
 
     private Long id;
     @NoSpecialCharacter
-    private String userName;
+    private String username;
     @Email
     private String email;
     @NoSpecialCharacter
-    private String lastName;
+    private String lastname;
     @NoSpecialCharacter
-    private String firstName;
+    private String firstname;
     @NoSpecialCharacter
-    private String cellPhone;
+    private String cellphone;
 
 }

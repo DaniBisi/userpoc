@@ -139,8 +139,8 @@ public abstract class GenericDaoHibernate<T, ID extends Serializable> implements
 
     /**
      * Convenience method to order a query, and apply some Criterions.<br>
-     * You can create an Order with Order.asc(<i>propertyName</i>) and
-     * Order.desc(<i>propertyName</i>)<br>
+     * You can create an Order with Order.asc(<i>propertyname</i>) and
+     * Order.desc(<i>propertyname</i>)<br>
      * You can create Criterions with Restrictions static methods.
      *
      * @param order order to apply

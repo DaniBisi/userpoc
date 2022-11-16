@@ -5,8 +5,8 @@ import javax.sql.DataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -18,7 +18,9 @@ import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
  *
@@ -26,8 +28,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableJpaRepositories(basePackages = "it.florenceconsulting.userpoc.dao")
-@PropertySource("persistence-h2.properties")
+@EnableWebMvc
+@TestPropertySource("persistence-h2.properties")
 @EnableTransactionManagement
+@ComponentScan(basePackages = {"it.florenceconsulting.userpoc.dao", "it.florenceconsulting.userpoc.controllers", "it.florenceconsulting.userpoc.service"})
 public class InMemoryConfig {
 
     @Autowired
@@ -41,9 +45,9 @@ public class InMemoryConfig {
         dataSource.setUsername(env.getProperty("jdbc.user"));
         dataSource.setPassword(env.getProperty("jdbc.pass"));
 
-        Resource initSchema = new ClassPathResource("schema-h2.sql");
+//        Resource initSchema = new ClassPathResource("schema-h2.sql");
         Resource initData = new ClassPathResource("data-h2.sql");
-        DatabasePopulator databasePopulator = new ResourceDatabasePopulator(initSchema, initData);
+        DatabasePopulator databasePopulator = new ResourceDatabasePopulator(initData);
         DatabasePopulatorUtils.execute(databasePopulator, dataSource);
 
         return dataSource;

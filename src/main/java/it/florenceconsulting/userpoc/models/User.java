@@ -5,8 +5,10 @@
  */
 package it.florenceconsulting.userpoc.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -27,12 +29,18 @@ import lombok.NoArgsConstructor;
 public class User{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
-    private String userName;
+    @Column(name="username")
+    private String username;
+    @Column(name="email")
     private String email;
-    private String lastName;
-    private String firstName;
-    private String cellPhone;
+    @Column(name="lastname")
+    private String lastname;
+    @Column(name="firstname")
+    private String firstname;
+    @Column(name="cellphone")
+    private String cellphone;
 
 }

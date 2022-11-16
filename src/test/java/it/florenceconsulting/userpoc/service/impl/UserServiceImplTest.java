@@ -55,23 +55,23 @@ public class UserServiceImplTest {
         System.out.println("fromDto");
         Long id = 1L;
         User u = User.builder().id(1L)
-                .cellPhone("333333333")
+                .cellphone("333333333")
                 .email("test@email.com")
-                .firstName("testname")
-                .lastName("testLastname")
-                .userName("testUsername").build();
+                .firstname("testname")
+                .lastname("testLastname")
+                .username("testUsername").build();
         when(userDao.getById(id)).thenReturn(u);
-        String newCellPhone = "22222222";
+        String newCellphone = "22222222";
         UserDto userDto = UserDto.builder()
                 .id(id)
-                .cellPhone(newCellPhone)
+                .cellphone(newCellphone)
                 .email("test@email.com")
-                .firstName("testname")
-                .lastName("testLastname")
-                .userName("testUsername").build();
+                .firstname("testname")
+                .lastname("testLastname")
+                .username("testUsername").build();
         User result = instance.fromDto(userDto);
         assertNotNull(result);
-        assertEquals(newCellPhone, result.getCellPhone());
+        assertEquals(newCellphone, result.getCellphone());
         /*
         this shoud test every field that has to be merged
          */
@@ -85,15 +85,15 @@ public class UserServiceImplTest {
         System.out.println("fromModel");
         Long id = 1L;
         User u = User.builder().id(1L)
-                .cellPhone("333333333")
+                .cellphone("333333333")
                 .email("test@email.com")
-                .firstName("testname")
-                .lastName("testLastname")
-                .userName("testUsername").build();
+                .firstname("testname")
+                .lastname("testLastname")
+                .username("testUsername").build();
         when(userDao.getById(id)).thenReturn(u);
         UserDto result = instance.fromModel(u);
         assertNotNull(result);
-        assertEquals(u.getCellPhone(), result.getCellPhone());
+        assertEquals(u.getCellphone(), result.getCellphone());
         /*
         this shoud test every field that has to be merged
          */

@@ -27,9 +27,9 @@ public class UserDaoImpl extends GenericDaoHibernate<User, Long> implements User
     public List<User> getByParams(String username, String lastname, String firstname, Boolean allFilters) {
         String hql = null;
         if (allFilters) {
-            hql = "from User u where u.userName LIKE :USERNAME AND u.lastName LIKE :LASTNAME AND u.firstName LIKE :FIRSTNAME";
+            hql = "from User u where u.username LIKE :USERNAME AND u.lastname LIKE :LASTNAME AND u.firstname LIKE :FIRSTNAME";
         } else {
-            hql = "from User u where u.userName LIKE :USERNAME OR u.lastName LIKE :LASTNAME OR u.firstName LIKE :FIRSTNAME";
+            hql = "from User u where u.username LIKE :USERNAME OR u.lastname LIKE :LASTNAME OR u.firstname LIKE :FIRSTNAME";
         }
         Query query = createQuery(hql);
         query.setParameter("USERNAME", "%" + username + "%");

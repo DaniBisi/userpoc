@@ -33,11 +33,11 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             user = User.builder().build();
         }
-        user.setCellPhone(userDto.getCellPhone());
+        user.setCellphone(userDto.getCellphone());
         user.setEmail(userDto.getEmail());
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        user.setUserName(userDto.getUserName());
+        user.setFirstname(userDto.getFirstname());
+        user.setLastname(userDto.getLastname());
+        user.setUsername(userDto.getUsername());
         return user;
 
     }
@@ -50,10 +50,10 @@ public class UserServiceImpl implements UserService {
         return UserDto.builder()
                 .id(user.getId())
                 .email(user.getEmail())
-                .firstName(user.getFirstName())
-                .lastName(user.getLastName())
-                .userName(user.getUserName())
-                .cellPhone(user.getCellPhone()).build();
+                .firstname(user.getFirstname())
+                .lastname(user.getLastname())
+                .username(user.getUsername())
+                .cellphone(user.getCellphone()).build();
     }
 
 }
