@@ -22,7 +22,7 @@ public class NoSpecialCharacterValidator implements ConstraintValidator<NoSpecia
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
         Pattern regex = Pattern.compile("^[a-zA-Z0-9]*");
-        return regex.matcher(value).find();
+        return regex.matcher(value).matches();
 
     }
 }
