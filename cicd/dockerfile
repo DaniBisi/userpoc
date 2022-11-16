@@ -1,0 +1,7 @@
+FROM openjdk:17-ea-slim
+WORKDIR /
+RUN ls
+COPY target/userpoc.jar userpoc.jar
+#RUN apk update && apk add bash
+CMD ["java", "-jar", "-Dspring.profiles.active=release", "userpoc.jar"]
+
