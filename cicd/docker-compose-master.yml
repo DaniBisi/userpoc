@@ -11,7 +11,7 @@ services:
   volumes:
    - /var/www/userpoc/db:/var/lib/postgresql/data
   ports:
-   - '55432:5432'
+   - '55433:5432'
  userpocimg:
   build: 
      context: ../
@@ -20,7 +20,7 @@ services:
   container_name: userpoc
   restart: always
   ports:
-   - '8080:8080'
+   - '8092:8080'
   depends_on:
    - db
   volumes:
