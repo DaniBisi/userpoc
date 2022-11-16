@@ -20,7 +20,7 @@ services:
   container_name: userpoc
   restart: always
   ports:
-   - '8091:8091'
+   - '8080:8080'
   depends_on:
    - db
   volumes:

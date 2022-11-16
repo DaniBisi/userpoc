@@ -33,11 +33,11 @@ public class FileServiceImpl implements FileService {
         List<UserDto> collect = records.stream().map((csvRecord)
                 -> UserDto.builder()
                         .id(Long.parseLong(csvRecord.get("Id")))
-                        .userName(csvRecord.get("UserName"))
+                        .username(csvRecord.get("Username"))
                         .email(csvRecord.get("Email"))
-                        .firstName(csvRecord.get("FirstName"))
-                        .lastName(csvRecord.get("LastName"))
-                        .cellPhone(csvRecord.get("Cellphone"))
+                        .firstname(csvRecord.get("Firstname"))
+                        .lastname(csvRecord.get("Lastname"))
+                        .cellphone(csvRecord.get("Cellphone"))
                         .build()
         ).collect(Collectors.toList());
         return collect;
