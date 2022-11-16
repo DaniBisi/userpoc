@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-install</actionName>
+            <displayName>install</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-compile</actionName>
+            <displayName>compile</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>compile</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-install skiptest</actionName>
+            <displayName>install skiptest</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+                <goal>-DskipTest=true</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-install -PRelease</actionName>
+            <displayName>install -PRelease</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+                <goal>-Prelease</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>run</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:3.0.0:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>-classpath %classpath it.florenceconsulting.userpoc.UserpocApplication</exec.args>
+                <exec.executable>java</exec.executable>
+            </properties>
+        </action>
+        <action>
+            <actionName>debug</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:3.0.0:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address} -classpath %classpath it.florenceconsulting.userpoc.UserpocApplication</exec.args>
+                <exec.executable>java</exec.executable>
+                <jpda.listen>true</jpda.listen>
+            </properties>
+        </action>
+        <action>
+            <actionName>profile</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:3.0.0:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>-classpath %classpath it.florenceconsulting.userpoc.UserpocApplication</exec.args>
+                <exec.executable>java</exec.executable>
+            </properties>
+        </action>
+        <action>
+            <actionName>CUSTOM-verify develop</actionName>
+            <displayName>verify develop</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>verify</goal>
+                <goal>-Pdevelop</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-verify develop jvm</actionName>
+            <displayName>verify develop jvm</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>verify</goal>
+            </goals>
+            <properties>
+                <spring.profiles.active>develop</spring.profiles.active>
+            </properties>
+            <activatedProfiles>
+                <activatedProfile>develop</activatedProfile>
+            </activatedProfiles>
+        </action>
+    </actions>

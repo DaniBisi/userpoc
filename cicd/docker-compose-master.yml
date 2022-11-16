@@ -1,0 +1,30 @@
+version: '3'
+services:
+ db:
+  container_name: db
+  image: postgres:9.5-alpine
+  restart: always
+  environment:
+   - POSTGRES_USER=userpoc
+   - POSTGRES_PASSWORD=userpoc
+   - POSTGRES_DB=userpoc
+  volumes:
+   - /var/www/userpoc/db:/var/lib/postgresql/data
+  ports:
+   - '55432:5432'
+ userpocimg:
+  build: 
+     context: ../
+     dockerfile: ./cicd/dockerfile
+  image: userpoc
+  container_name: userpoc
+  restart: always
+  ports:
+   - '8080:8080'
+  depends_on:
+   - db
+  volumes:
+   - '/home/jenkins/www/userpoc/folder:/var/www/userpoc/folder'
+  environment:
+   - TZ=Europe/Rome
+
