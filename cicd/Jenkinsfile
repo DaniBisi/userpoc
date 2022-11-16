@@ -15,7 +15,7 @@ pipeline {
                 // 
               sh 'docker-compose -f /var/lib/jenkins/workspace/userpoc/cicd/docker-compose-master.yml down'
               sh 'rm "/var/lib/jenkins/workspace/userpoc/cicd/userpoc/userpoc.jar" || true'
-              sh 'cp "/var/lib/jenkins/workspace/userpoc/target/userpoc.jar" "/var/lib/jenkins/workspace/userpoc/docker/userpoc/userpoc.jar"'
+              sh 'cp "/var/lib/jenkins/workspace/userpoc/target/userpoc.jar" "/var/lib/jenkins/workspace/userpoc/cicd/userpoc/userpoc.jar"'
               sh 'docker-compose -f /var/lib/jenkins/workspace/userpoc/cicd/docker-compose-master.yml up -d --build --force-recreate'
             }
         }
