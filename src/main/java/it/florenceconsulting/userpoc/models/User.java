@@ -15,6 +15,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 /**
  *
@@ -26,21 +28,30 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User{
-
+public class User {
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @GeneratedValue(generator = "sequence-generator")
+    @GenericGenerator(
+            name = "sequence-generator",
+            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+            parameters = {
+                @Parameter(name = "sequence_name", value = "user_sequence"),
+                @Parameter(name = "initial_value", value = "100"),
+                @Parameter(name = "increment_size", value = "1")
+            }
+    )
+    @Column(name = "id")
     private Long id;
-    @Column(name="username")
+    @Column(name = "username")
     private String username;
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
-    @Column(name="lastname")
+    @Column(name = "lastname")
     private String lastname;
-    @Column(name="firstname")
+    @Column(name = "firstname")
     private String firstname;
-    @Column(name="cellphone")
+    @Column(name = "cellphone")
     private String cellphone;
 
 }
