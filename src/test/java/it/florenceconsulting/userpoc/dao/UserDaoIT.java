@@ -6,18 +6,19 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.test.context.web.WebAppConfiguration;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(
         classes = {InMemoryConfig.class})
-@Transactional
-public class ITUserDao {
+@WebAppConfiguration
+@TestPropertySource(
+        locations = {"classpath:application.properties", "classpath:persistence-h2.properties"})
+public class UserDaoIT {
 
     @Autowired
     private UserDao userDao;
