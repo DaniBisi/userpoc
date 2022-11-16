@@ -77,4 +77,27 @@
                 <exec.executable>java</exec.executable>
             </properties>
         </action>
+        <action>
+            <actionName>CUSTOM-verify develop</actionName>
+            <displayName>verify develop</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>verify</goal>
+                <goal>-Pdevelop</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-verify develop jvm</actionName>
+            <displayName>verify develop jvm</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>verify</goal>
+            </goals>
+            <properties>
+                <spring.profiles.active>develop</spring.profiles.active>
+            </properties>
+            <activatedProfiles>
+                <activatedProfile>develop</activatedProfile>
+            </activatedProfiles>
+        </action>
     </actions>

@@ -48,7 +48,7 @@ import org.springframework.web.context.WebApplicationContext;
 @WebAppConfiguration
 @TestPropertySource(
         locations = {"classpath:application.properties", "classpath:persistence-h2.properties"})
-public class ITUserController {
+public class UserControllerIT {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -57,7 +57,7 @@ public class ITUserController {
 
     private MockMvc mvc;
 
-    public ITUserController() {
+    public UserControllerIT() {
         this.objectMapper = new ObjectMapper();
     }
 
